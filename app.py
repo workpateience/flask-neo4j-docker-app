@@ -1,5 +1,6 @@
 from flask import Flask
 from neomodel import config
+from flask import render_template
 from dotenv import load_dotenv
 import os
 
@@ -16,6 +17,7 @@ app.register_blueprint(queries_bp)
 
 @app.route("/")
 def home():
-    return "Flask + Neo4j app is running!"
+    print("Home route accessed")
+    return render_template("index.html")
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
