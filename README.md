@@ -20,7 +20,7 @@ A fully containerized Flask backend application integrated with a Neo4j graph da
 docker compose up --build
 ```
 
-##  stop contaiiner
+##  stop container
 
 ```bash
   docker stop flask-neo4j-docker-app-neo4j-1
@@ -44,7 +44,7 @@ docker run --rm \
 docker run --rm -v "%cd%\neo4j-dump:/var/lib/neo4j/import" -v neo4j_data:/data neo4j:latest neo4j-admin database load neo4j --from-path=/var/lib/neo4j/import --overwrite-destination=true
 ```
 
-##  start contaiiner
+##  start container
 
 ```bash
  docker start flask-neo4j-docker-app-neo4j-1
