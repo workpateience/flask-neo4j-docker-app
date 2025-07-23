@@ -1,0 +1,19 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neo4j Flask Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to Neo4j + Flask App</h1>
+
+    <div class="button-container">
+        <a href="/tokens" class="button-link">All Tokens</a>
+        <a href="/projects" class="button-link">All Projects</a>
+        <a href="/files-in-project-1" class="button-link">Files in Project 1</a>
+        <a href="/images-by-google-id" class="button-link">Images by Google ID</a>
+    </div>
+</body>
+</html>

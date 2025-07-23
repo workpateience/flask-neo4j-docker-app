@@ -8,18 +8,22 @@ services:
       - "7687:7687"
     environment:
       - NEO4J_AUTH=neo4j/strongpassword123
-      - NEO4J_dbms_memory_pagecache_size=1G
       - NEO4J_dbms_memory_heap_max__size=1G
       - NEO4J_dbms_memory_pagecache_size=1G
     volumes:
       - neo4j_data:/data
+      - ./neo4j.dump:/var/lib/neo4j/import/neo4j.dump  # ✅ Mount dump file into container
 
   flask_app:
     build: .
     env_file:
-      - .env        # ✅ Ensure file exists & is named correctly
+      - .env
     ports:
-      - "5000:5000" # ✅ Correct format with quotes
+      - "5000:5000"
+    volumes:
+      - .:/app                          # ✅ Mount code for live reload
+    working_dir: /app
+    command: flask run --host=0.0.0.0 --port=5000 --reload  # ✅ Enable auto-reload
     depends_on:
       - neo4j
 

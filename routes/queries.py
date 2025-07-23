@@ -27,11 +27,10 @@ def list_files_in_project_1():
     if not project:
         return jsonify({"error": "Project 1 not found"}), 404
 
-    files = File.nodes.filter(belongs_to__name="Project 1")
+    # Relationship traversal
+    files = project.has_files.all()
     return jsonify([{'name': f.name} for f in files])
 
-
-# Cypher query: images with width=200 uploaded by user with specific google_id
 @queries_bp.route('/images-by-google-id')
 def images_by_google_id():
     query = """

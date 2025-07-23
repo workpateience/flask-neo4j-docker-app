@@ -5,7 +5,7 @@ from neomodel import (
 import os
 
 # Neo4j connection using environment variables
-config.DATABASE_URL = os.getenv("NEO4J_BOLT_URL", "bolt://neo4j:testpassword@neo4j:7687")
+config.DATABASE_URL = os.getenv("NEO4J_BOLT_URL", "bolt://neo4j:strongpassword123@neo4j:7687")
 
 # ---------------------- Nodes ------------------------
 
