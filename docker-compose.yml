@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/strongpassword123
+      - NEO4J_dbms_memory_pagecache_size=1G
+      - NEO4J_dbms_memory_heap_max__size=1G
+      - NEO4J_dbms_memory_pagecache_size=1G
+    volumes:
+      - neo4j_data:/data
+
+  flask_app:
+    build: .
+    env_file:
+      - .env        # ✅ Ensure file exists & is named correctly
+    ports:
+      - "5000:5000" # ✅ Correct format with quotes
+    depends_on:
+      - neo4j
+
+volumes:
+  neo4j_data:
